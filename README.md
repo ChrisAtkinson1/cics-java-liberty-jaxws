@@ -14,8 +14,8 @@ This is a set of sample Java projects for  demonstrating how you can use JAX-WS 
 
 ## Requirements
 
-## Prerequisites
-- CICS TS 6.1 or later
+
+ CICS TS 6.1 or later
 - Java SE 11 or later on the workstation
 - One of the following on your workstation:
     - Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty
