@@ -7,7 +7,7 @@ The aim of this project is to show how you can use the CICS Liberty JVM server t
 ## Contents
 This is a set of sample Java projects for  demonstrating how you can use JAX-WS in a WAR in a Liberty JVM server.
 
-* [`cics-java-liberty-jaxws-app`](cics-java-liberty-jaxws-app - Dynamic web project containing the Java source.
+* [`cics-java-liberty-jaxws-app`](cics-java-liberty-jaxws-app) - Dynamic web project containing the Java source.
 * [`cics-java-liberty-jaxws-bundle`](cics-java-liberty-jaxws-bundle) - CICS bundle plug-in based project, contains Web application bundle-parts. Use with Gradle and Maven builds.
 * [`etc/config/liberty`](etc/config/liberty) - Liberty server configuration files
 * [`etc/eclipse_projects/cics-java-liberty-jaxws-bundle](etc/eclipse_projects/cics-java-liberty-jaxws-bundle) - CICS bundle project (CICS Explorer based CICS bundle project, contains Web application bundle-parts. Use with CICS Explorer 'Export to zFS' deployment capability.)
