@@ -16,7 +16,7 @@ This is a set of sample Java projects for  demonstrating how you can use JAX-WS 
 
 
  CICS TS 6.1 or later
-- Java SE 11 or later on the workstation
+- Java SE 17 or later on the workstation
 - One of the following on your workstation:
     - Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty
     - An IDE of your choice that supports Gradle or Maven (or can run the Wrappers)
