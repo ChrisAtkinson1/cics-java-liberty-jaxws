@@ -15,8 +15,8 @@ This is a set of sample Java projects for  demonstrating how you can use JAX-WS 
 ## Requirements
 
 
- CICS TS 6.1 or later
-- Java SE 17 or later on the workstation
+ CICS TS 5.5 or later
+- Java SE 8 or later on the workstation
 - One of the following on your workstation:
     - Eclipse with the IBM CICS SDK for Java EE, Jakarta EE and Liberty
     - An IDE of your choice that supports Gradle or Maven (or can run the Wrappers)
@@ -32,7 +32,7 @@ This is a set of sample Java projects for  demonstrating how you can use JAX-WS 
 
 ### Check dependencies
  
-If you are building this sample with Gradle or Maven you should verify that the correct CICS TS bill of materials (BOM) is specified for your target release of CICS. The BOM specifies a consistent set of artifacts, and adds information about their scope. In the example below the version specified is compatible with CICS TS V6.1 with JCICS APAR PH59389, or newer. That is, the Java byte codes built by compiling against this version of JCICS will be compatible with later CICS TS versions and subsequent JCICS APARs. 
+If you are building this sample with Gradle or Maven you should verify that the correct CICS TS bill of materials (BOM) is specified for your target release of CICS. The BOM specifies a consistent set of artifacts, and adds information about their scope. In the example below the version specified is compatible with CICS TS V6.1 and below with JCICS APAR PH59389, or newer. That is, the Java byte codes built by compiling against this version of JCICS will be compatible with later CICS TS versions and subsequent JCICS APARs. 
 You can browse the published versions of the CICS BOM at [Maven Central.](https://mvnrepository.com/artifact/com.ibm.cics/com.ibm.cics.ts.bom)
  
 Gradle (build.gradle): 
@@ -64,9 +64,10 @@ You can build the sample in a variety of ways:
 - or you can build it from the command line if you have Gradle or Maven installed on your workstation
   
 
+
 > [!IMPORTANT]
-> The sample comes pre-configured for use with a JDK 17 and CICS TS V6.1 Libraries for Jakarta EE 9. When you initially import the project to your IDE, if your IDE is not configured for a JDK 17, or does not have CICS Explorer SDK installed, you might experience local project compile errors. To resolve issues you should configure the Project's build-path to add/remove your preferred combination of CICS TS, JDK, and Liberty's Enterprise Java libraries (Java EE or Jakarta EE). Resolving errors might also depend on how you wish to build and deploy the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the jaxws-app's Project properties. Select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
-If you are building and deploying with Gradle or Maven then you don't necessarily need to fix the local errors, but to do so, you can do as above, or you can run a tooling refresh on the jaxws-app project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
+> The sample comes pre-configured for use with a JDK 8 and CICS TS V5.5 Libraries for Java EE 8. When you initially import the project to your IDE, if your IDE is not configured for a JDK 8, or does not have CICS Explorer SDK installed, you might experience local project compile errors. To resolve issues you should configure the Project's build-path to add/remove your preferred combination of CICS TS, JDK, and Liberty's Enterprise Java libraries (Java EE or Jakarta EE). Resolving errors might also depend on how you wish to build and deploy the sample. If you are building and deploying through CICS Explorer SDK and 'Export to zFS' you should edit the link-app's Project properties. Select 'Java Build Path', on the Libraries tab select 'Classpath', click 'Add Library', select 'CICS with Enterprise Java and Liberty' Library, and choose the appropriate CICS and Enterprise Java versions.
+If you are building and deploying with Gradle or Maven then you don't necessarily need to fix the local errors, but to do so, you can do as above, or you can run a tooling refresh on the jdbc-web project. For example, in Eclipse: right-click on "Project", select "Gradle -> Refresh Gradle Project", **or** right-click on "Project", select "Maven -> Update Project...".
 
 > [!TIP]
 > In Eclipse, Gradle (buildship) is able to fully refresh and resolve the local classpath even if the project was previously updated by Maven. However, Maven (m2e) does not currently reciprocate that capability. If you previously refreshed the project with Gradle, you'll need to manually remove the 'Project Dependencies' entry on the Java build-path of your Project Properties to avoid duplication errors when performing a Maven Project Update.
@@ -131,7 +132,7 @@ mvn clean verify -Dcics.jvmserver=MYJVM
 ## Deploying to a Liberty JVM server
 
 Ensure you have the following features defined in your Liberty server.xml:
-* `xmlWS-3.0`
+* `jaxws-2.2` or `jaxws-2.2` 
 
 A template server.xml is provided [here](./etc/config/liberty/server.xml).
 

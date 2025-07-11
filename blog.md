@@ -1,6 +1,6 @@
-# Developing a JAX\-WS Web service for Liberty in CICS
+http://winmvs2d.hursley.ibm.com:29198/cics-java-liberty-jaxws-app/MyCICSService?WSDL# Developing a JAX\-WS Web service for Liberty in CICS
 
-The aim of this article is to show how you can develop a web service in Java using the JAX\-WS API using Jakarta EE and deploy this application directly into a Liberty JVM server running within CICS. It is intended for Java developers and CICS system programmers that have little knowledge of the Liberty JVM server environment. 
+The aim of this article is to show how you can develop a web service in Java using the JAX\-WS API using Java EE and deploy this application directly into a Liberty JVM server running within CICS. It is intended for Java developers and CICS system programmers that have little knowledge of the Liberty JVM server environment. 
 It is based on an original article by Giovanni Creato.
 
 The diagram below shows the overall view of how CICS will act as a web service provider. return the result to the caller.
@@ -8,7 +8,7 @@ The diagram below shows the overall view of how CICS will act as a web service p
 The flow will be as follows:
 
 1.  HTTP web service request will be accepted by the Liberty HTTP listener
-1.  The Java application using the JAX\-WS API will parse the web services request using Jakarta EE.
+1.  The Java application using the JAX\-WS API will parse the web services request using Java EE.
 1.  The Java application calls an existing CICS COBOL program using the JCICS API passing a record created using the IBM Record Generator
 1.  The COBOL program will return data in a COMMAREA to the Java application
 1.  The Java application will parse the returned data using a helper class, and then a response returned to the caller.
@@ -17,12 +17,12 @@ The flow will be as follows:
 
 Before running through this tutorial you should have the following resources in place:
 
-- CICS region (CICS TS V6.1) or later
+- CICS region (CICS TS V5.5) or later
 - A Liberty JVM server with the following features added:
     - `cicsts:core-1.0`
-    - `xmlWS-3.0` or `xmlWS-4.0`
-- Java SE 17 on the z/OS system
-- Java SE 17 on the workstation
+    - `jaxws-2.2 or jaxws-2.3`
+- Java SE 8 on the z/OS system
+- Java SE 8 on the workstation
 - An Eclipse development environment on the workstation including:	
     * CICS Explorer SDK for Java support
     * CICS SDK for Web and JSP support
@@ -210,16 +210,15 @@ Now that you have deployed your application you can test the web service using a
 To find the address at which your web service is available you can look in the Liberty messages.log file for the message **CWWKT0016I** showing the application is available and URL to be used.
 
 ```
-CWWKZ0018I: Starting application OSGiApplication
-SRVE0169I : Loading Web Module: com.ibm.cicsdev.ws
-SRVE0250I : Web Module com.ibm.cicsdev.ws has been bound to default_host
-CWWKT0016I: Web application available (default_host): http://hostname:port/JAX-WS/Services/
-CWWKZ0001I: Application com.ibm.cicsdev.ws.app started in 1.914 seconds.
+I SRVE0169I: Loading Web Module: cics-java-liberty-jaxb-app.
+I SRVE0250I: Web Module cics-java-liberty-jaxb-app has been bound to default_host.
+A CWWKT0016I: Web application available (default_host): http://hostname:port/cics-java-liberty-jaxws-app/
+I SESN0176I: A new session context will be created for application key default_host/cics-java-liberty-jaxws-app
 ```
 
 You also need to obtain the WSDL that describes the web service. You can either downlaod the sample supplied with this tutorial or you can use the following style query to obtain this from the Liberty server:
 
-`http://hostname:port/JAX-WS/Services/MyCICSService?WSDL`
+`http://hostname:port/cics-java-liberty-jaxws-app/MyCICSService?WSDL`
 
 Once you have the WSDL copy this into the Eclipse project you are using and open the Eclipse *Web Services Explorer* using the context menu **Web Services \-> Test with Web Services Explorer**. This should display the following.
 

@@ -4,7 +4,7 @@
     <featureManager>
         <feature>cicsts:core-1.0</feature>
         <feature>cicsts:defaultApp-1.0</feature>
-        <feature>xmlWS-3.0</feature>
+        <feature>jaxws-2.2</feature>
         <feature>transportSecurity-1.0</feature>
     </featureManager>
     

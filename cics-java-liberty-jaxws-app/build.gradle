@@ -13,8 +13,8 @@ version = '1.0.0'
 
 java
 {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 // If in Eclipse, add Javadoc to the local project classpath
@@ -34,8 +34,9 @@ repositories
 dependencies 
 {
 
-    // https://mvnrepository.com/artifact/jakarta.xml.ws/jakarta.xml.ws-api
-    compileOnly("jakarta.xml.ws:jakarta.xml.ws-api:4.0.2")
+    // https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api
+    compileOnly("javax.xml.ws:jaxws-api:2.3.1")
+	compileOnly("javax.jws:javax.jws-api:1.1")  
     // https://mvnrepository.com/artifact/com.ibm.jzos/ibmjzos
     compileOnly("com.ibm.jzos:ibmjzos:2.4.11.3")
     compileOnly enforcedPlatform("com.ibm.cics:com.ibm.cics.ts.bom:6.1-20240903141936-PH59389")

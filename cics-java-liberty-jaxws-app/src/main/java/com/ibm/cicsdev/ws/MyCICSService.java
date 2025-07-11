@@ -12,8 +12,8 @@ package com.ibm.cicsdev.ws;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jakarta.jws.WebMethod;
-import jakarta.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
 import com.ibm.cics.server.CicsConditionException;
 import com.ibm.cics.server.Program;
@@ -67,23 +67,27 @@ public class MyCICSService {
 		logger.log(Level.INFO, "About to invoke : " + cicsProgram);
 
 		Task t = Task.getTask();
-		 
 		if ( t == null ){
-		   System.err.println("LinkProgram : Can't get Task");
+			System.err.println("Can't get Task");
+			commareaWrapper.setResultText("CICS Program cannot get the task");
+			commareaWrapper.setResultCode(-1); 
 		}
-		 
 		else
 		{
-		   Program programToLink = new Program();
-		   programToLink.setName(cicsProgram);
-		 
-		   try {
-		      programToLink.link(commareaWrapper.getByteBuffer()); 
-		      result = "OK";
-		   } catch (CicsConditionException e) {
-		      System.err.println("An error occurred");
-		      System.err.println("Message " + e.getMessage());
-		   }
+			Program programToCall = new Program();
+			
+			programToCall.setName(cicsProgram);
+			try {
+				programToCall.link(commareaWrapper.getByteBuffer());
+				logger.log(Level.INFO, "Returned from CICS program");
+				result = "OK";
+			} catch (CicsConditionException e) {
+				logger.log(Level.SEVERE, "Message " + e.getMessage());			
+				logger.log(Level.SEVERE, "RESP2 " + e.getRESP2());
+				commareaWrapper.setResultText(e.getMessage());
+				commareaWrapper.setResultCode(e.getRESP2()); 
+				// e.printStackTrace();
+			}
 		}
 				
 		if (result.startsWith("OK")){
