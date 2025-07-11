@@ -210,16 +210,15 @@ Now that you have deployed your application you can test the web service using a
 To find the address at which your web service is available you can look in the Liberty messages.log file for the message **CWWKT0016I** showing the application is available and URL to be used.
 
 ```
-CWWKZ0018I: Starting application OSGiApplication
-SRVE0169I : Loading Web Module: com.ibm.cicsdev.ws
-SRVE0250I : Web Module com.ibm.cicsdev.ws has been bound to default_host
-CWWKT0016I: Web application available (default_host): http://hostname:port/JAX-WS/Services/
-CWWKZ0001I: Application com.ibm.cicsdev.ws.app started in 1.914 seconds.
+I SRVE0169I: Loading Web Module: cics-java-liberty-jaxb-app.
+I SRVE0250I: Web Module cics-java-liberty-jaxb-app has been bound to default_host.
+A CWWKT0016I: Web application available (default_host): http://hostname:port/cics-java-liberty-jaxws-app/
+I SESN0176I: A new session context will be created for application key default_host/cics-java-liberty-jaxws-app
 ```
 
 You also need to obtain the WSDL that describes the web service. You can either downlaod the sample supplied with this tutorial or you can use the following style query to obtain this from the Liberty server:
 
-`http://hostname:port/JAX-WS/Services/MyCICSService?WSDL`
+`http://hostname:port/cics-java-liberty-jaxws-app/MyCICSService?WSDL`
 
 Once you have the WSDL copy this into the Eclipse project you are using and open the Eclipse *Web Services Explorer* using the context menu **Web Services \-> Test with Web Services Explorer**. This should display the following.
 
