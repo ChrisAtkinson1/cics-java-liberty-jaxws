@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [17, 21]
+        jdk: [8]
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK ${{ matrix.jdk }}
